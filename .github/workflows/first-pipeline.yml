@@ -6,9 +6,18 @@ on:
       - main
 
 jobs:
-  simple-job:
+  validate-project:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say hello
-        run: echo "Hello! Your first pipeline is running successfully."
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Verify application file exists
+        run: |
+          if [ -f app/index.html ]; then
+            echo "index.html found. Project structure looks correct."
+          else
+            echo "index.html missing! Pipeline failing."
+            exit 1
+          fi
