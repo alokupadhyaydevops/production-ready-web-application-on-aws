@@ -21,3 +21,12 @@ jobs:
             echo "index.html missing! Pipeline failing."
             exit 1
           fi
+      - name: Use secret safely
+        run: |
+          if [ -z "${{ secrets.MY_SECRET }}" ]; then
+            echo "Secret is missing"
+            exit 1
+          else
+            echo "Secret is available and securely loaded"
+          fi
+
