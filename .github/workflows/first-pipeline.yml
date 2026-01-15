@@ -31,4 +31,4 @@ jobs:
 
       - name: Upload artifact to S3
         run: |
-          aws s3 cp app/index.html s3://alok-ci-cd-artifact/index.html
+          aws s3 cp app/index.html s3://alok-ci-cd-artifact/current/index.html
